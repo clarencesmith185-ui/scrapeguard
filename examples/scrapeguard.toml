@@ -1,0 +1,32 @@
+# URLs and baseline paths resolve relative to this file.
+baseline = ".scrapeguard/baseline.json"
+
+[[targets]]
+name = "product"
+url = "pages/current.html"
+timeout_ms = 10000
+# For JS-rendered sites, wait for a stable page marker before inspecting fields.
+wait_for = "#product"
+
+[[targets.fields]]
+name = "title"
+selector = "#product h1"
+type = "text"
+
+[[targets.fields]]
+name = "price"
+selector = ".price"
+type = "number"
+# Set false if changing prices are normal; count/type validation still applies.
+track_changes = true
+
+[[targets.fields]]
+name = "stock"
+selector = "[data-testid='stock']"
+type = "integer"
+
+[[targets.fields]]
+name = "link"
+selector = "#details"
+attribute = "href"
+type = "url"
